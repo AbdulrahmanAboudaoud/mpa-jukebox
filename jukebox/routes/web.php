@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/login',[CustomerAuthController::class,'login']);
 Route::get('/registration',[CustomerAuthController::class,'registration']);
+Route::post('/register-user',[CustomerAuthController::class,'registerUser'])->name('register-user');

@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
-                <h4>Registration</h4>
+                <h4>Login</h4>
                 <hr>
                 <form>
         
@@ -24,9 +24,10 @@
                         <input type="password" class="form-control" placeholder="Enter Password" name="password" value="">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-block btn-primary" type="submit"> Register</button>
+                        <button class="btn btn-block btn-primary" type="submit"> Login</button>
                     </div>
-
+                    <br>
+                    <a href="registration">New user ?! Register here.</a>
                 </form>
             </div>
 
