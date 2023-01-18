@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password"> Password</label>
-                        <input type="text" class="form-control" placeholder="Enter Password" name="password" value="">
+                        <input type="password" class="form-control" placeholder="Enter Password" name="password" value="">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-block btn-primary" type="submit"> Register</button>
