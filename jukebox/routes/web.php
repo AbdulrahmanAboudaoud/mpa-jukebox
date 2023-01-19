@@ -28,3 +28,5 @@ Route::get('/logout',[CustomerAuthController::class,'logout']);
 
 
 Route::get('/category', [CategoryController::class, 'index']);
+
+Route::get('/song', 'App\Http\Controllers\SongController@index');

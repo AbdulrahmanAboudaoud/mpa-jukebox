@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +17,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-16">
-                    @foreach ($categories as $cat)
+                    @foreach ($songs as $song)
 
                     <div class="card my-4 " style="width: 15rem; display:inline-block;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ $cat->name}} </h5>
-                        <p class="card-text">With this text u can see all information about this category </p>
-                        <a href="#" class="btn btn-success">Go somewhere</a>
+                        <h5 class="card-title">{{ $song->name}} </h5>
+                       
                         </div>
                     </div>
                     
