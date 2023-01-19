@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +25,6 @@ Route::post('/register-user',[CustomerAuthController::class,'registerUser'])->na
 Route::post('/login-user',[CustomerAuthController::class,'loginUser'])->name('login-user');
 Route::get('/dashboard',[CustomerAuthController::class,'dashboard'])->middleware('isLoggedIn');
 Route::get('/logout',[CustomerAuthController::class,'logout']);
+
+
+Route::get('/category', [CategoryController::class, 'index']);
