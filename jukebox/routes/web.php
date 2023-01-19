@@ -21,4 +21,5 @@ Route::get('/login',[CustomerAuthController::class,'login']);
 Route::get('/registration',[CustomerAuthController::class,'registration']);
 Route::post('/register-user',[CustomerAuthController::class,'registerUser'])->name('register-user');
 Route::post('/login-user',[CustomerAuthController::class,'loginUser'])->name('login-user');
-Route::get('/dashboard',[CustomerAuthController::class,'dashboard']);
+Route::get('/dashboard',[CustomerAuthController::class,'dashboard'])->middleware('isLoggedIn');
+Route::get('/logout',[CustomerAuthController::class,'logout']);
