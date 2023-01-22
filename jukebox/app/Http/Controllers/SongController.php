@@ -7,9 +7,10 @@ use App\Models\Song;
 
 class SongController extends Controller
 {
-    public function index(){
+    public function index($id){
         $songs = Song::get();
-    
-        return view('song.index', ['songs' => $songs]);
+       
+      
+        return view('song.index', ['songs' => $songs ], compact('id'));
     }
 }

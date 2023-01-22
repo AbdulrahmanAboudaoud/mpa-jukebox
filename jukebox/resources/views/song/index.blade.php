@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-16">
                     @foreach ($songs as $song)
-
+                    @if ($song->category_id == $id)
                     <div class="card my-4 " style="width: 15rem; display:inline-block;">
                         <div class="card-body">
                         <h5 class="card-title">{{ $song->name}} </h5>
@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     
+                    @endif 
                     @endforeach 
                 </div>
             </div>

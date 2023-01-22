@@ -20,7 +20,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{ $cat->name}} </h5>
                         <p class="card-text">With this text u can see all information about this category </p>
-                        <a href="#" class="btn btn-success">Go somewhere</a>
+                        <a href="{{ url('song/'.$cat->id) }}" class="btn btn-success">check out {{ $cat->name}} songs here</a>
                         </div>
                     </div>
                     
