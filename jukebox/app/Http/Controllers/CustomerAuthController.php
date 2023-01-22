@@ -61,6 +61,7 @@ class CustomerAuthController extends Controller
             $data = User::where('id','=',Session::get('loginId'))->first();
         }
         return view('dashboard', compact('data'));
+        
     }
     public function logout(){
         if(Session::has('loginId')){

@@ -1,0 +1,31 @@
+.maindiv{
+   background-image: url("../images/2.webp");
+   height: auto;
+   width: auto; 
+   background-color: black !important; 
+   
+}
+
+.loginBox{
+  width: 400px;
+  height: 350px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  margin: -50px 0 0 -50px;
+  background-color: white;
+  border: solid black 10px;
+  border-radius: 20px;
+}
+
+.loginBtns{
+ position: absolute;
+ bottom: 20px;
+ left: 70px;
+}
+
+.loginLogo{
+    
+    height: 200px;
+    width: 350px; 
+}
