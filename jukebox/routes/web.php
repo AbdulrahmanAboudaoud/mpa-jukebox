@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PlaylistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::get('/logout',[CustomerAuthController::class,'logout']);
 Route::get('/category', [CategoryController::class, 'index']);
 
 Route::get('/song/{id}', 'App\Http\Controllers\SongController@index');
+Route::post('add-playlist', [PlaylistController::class, 'createPlayList']);

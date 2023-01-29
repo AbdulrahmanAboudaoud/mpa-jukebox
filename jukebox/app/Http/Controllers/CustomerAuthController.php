@@ -66,6 +66,7 @@ class CustomerAuthController extends Controller
     public function logout(){
         if(Session::has('loginId')){
             session::pull('loginId');
+            session::pull('PlayList');
             return redirect('login');
         }
     }

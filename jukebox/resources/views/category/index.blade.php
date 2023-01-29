@@ -13,13 +13,13 @@
     
         <div class="container">
             <div class="row">
-                <div class="col-md-16">
+                <div class="col-md-12">
                     @foreach ($categories as $cat)
 
-                    <div class="card my-4 " style="width: 15rem; display:inline-block;">
+                    <div class="card my-4 " style="width: 15rem;  display:inline-block;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ $cat->name}} </h5>
-                        <p class="card-text">With this text u can see all information about this category </p>
+                        <h5 class="card-title text-center fw-bold">{{ $cat->name}} </h5>
+                        
                         <a href="{{ url('song/'.$cat->id) }}" class="btn btn-success">check out {{ $cat->name}} songs here</a>
                         </div>
                     </div>
