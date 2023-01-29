@@ -13,8 +13,9 @@ class SongController extends Controller
         $data = array();
         if(Session::has('loginId')){
             $data = User::where('id','=',Session::get('loginId'))->first();
+            $playlistname = Session::get('PlayList');
         }
       
-        return view('song.index', ['songs' => $songs ], compact('id', 'data'));
+        return view('song.index', ['songs' => $songs ], compact('id', 'data','playlistname'));
     }
 }
