@@ -38,20 +38,23 @@
                         <div id="myModal"class="modal">
 
                         <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
                           
                           
-                        <form> 
-                          <label for="lists">Choose a play list:</label> 
-                          <select name="lists" id="lists">
-                            @foreach ($playlistname as $list)
-                            <option value="{{$list}}">{{$list}}</option>
-                            @endforeach
-                          </select> 
+                        <form action="{{url('add-Song')}}" method="POST"> 
+                         @csrf
+                            
+                          
+                          <input type="hidden" name="getSong" value="" id="hidden">
+
+
                           <input type="submit" value="add">
+                          
+                        
                         </form>
-                        </div>
+                        
+                    </div>
                     
                         <script>
                             // Get the modal
@@ -63,14 +66,19 @@
                             // Get the <span> element that closes the modal
                             var span = document.getElementsByClassName("close")[0];
                             
+                                                 
                             // When the user clicks the button, open the modal 
                             btn.onclick = function() {
                             modal.style.display = "block";
+                            document.getElementById('hidden').value = '{{$song->id}}';
+                           
                             }
                             
                             // When the user clicks on <span> (x), close the modal
                             span.onclick = function() {
                             modal.style.display = "none";
+                                                        
+                            
                             }
                             
                             // When the user clicks anywhere outside of the modal, close it

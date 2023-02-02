@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,51 @@
 <body>
     @include('/layout/header')
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
+                <table class="table">
+                    <thead>
+                       <th>Name</th>
+                       <th>artist</th>
+                       <th>duration</th>
+                       
+                    </thead>
+                       <tbody>
+                        
+
+                          
+                @if(!empty($terminalsongs))
+                @foreach ($terminalsongs as $terminal)
+                @foreach ($songs as $song)
+               
+                @if ($terminal == $song['id'])
+                <tr>
+                <td>{{$song['name']}}</td>
+                <td>{{$song['artist']}}</td>
+                <td>{{$song['duration']}}</td>
+                
+                </tr>
+                    <div id="myModal"class="modal">
+
+                    <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+
+                    @endif
+                    @endforeach
+                    @endforeach 
+                    @endif
+                            
+                        </tbody>
+                    </table>
+    	        </div>
+            </div>
+                   
+    
+            </div>    
+
+    <!--
     <form action="{{url('add-playlist')}}" method="POST">
         <div class="form-group">
             @csrf
@@ -20,7 +67,9 @@
             <button type="submit">create</button>
         </div>
     </form>
-    @dd(Session::all())
+-->
+   
+    
 
     
 

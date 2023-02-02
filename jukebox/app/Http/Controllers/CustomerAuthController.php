@@ -7,6 +7,7 @@ use Illuminate\Validation\Rules\Unique;
 use App\Models\User;
 use Hash;
 use Session;
+use App\Models\Song;
 
 class CustomerAuthController extends Controller
 {
@@ -58,15 +59,17 @@ class CustomerAuthController extends Controller
     public function dashboard(){
         $data = array();
         if(Session::has('loginId')){
+            $songs = Song::get();
+            $terminalsongs = Session::get('InPlayList');
             $data = User::where('id','=',Session::get('loginId'))->first();
         }
-        return view('dashboard', compact('data'));
+        return view('dashboard', compact('data', 'songs' ,'terminalsongs'));
         
     }
     public function logout(){
         if(Session::has('loginId')){
             session::pull('loginId');
-            session::pull('PlayList');
+            session::pull('InPlayList');
             return redirect('login');
         }
     }
