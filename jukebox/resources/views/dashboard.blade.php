@@ -20,6 +20,7 @@
                        <th>Name</th>
                        <th>artist</th>
                        <th>duration</th>
+                       <th></th>
                        
                     </thead>
                        <tbody>
@@ -35,6 +36,7 @@
                 <td>{{$song['name']}}</td>
                 <td>{{$song['artist']}}</td>
                 <td>{{$song['duration']}}</td>
+                <td><a href="{{url('delete-Playlist/'.$terminal)}}">Delete</a></td>
                 
                 </tr>
                     <div id="myModal"class="modal">
