@@ -17,5 +17,6 @@ class SongController extends Controller
         }
       
         return view('song.index', ['songs' => $songs ], compact('id', 'data','playlistname'));
+        
     }
 }

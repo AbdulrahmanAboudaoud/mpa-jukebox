@@ -26,7 +26,7 @@ Route::post('/register-user',[CustomerAuthController::class,'registerUser'])->na
 Route::post('/login-user',[CustomerAuthController::class,'loginUser'])->name('login-user');
 Route::get('/dashboard',[CustomerAuthController::class,'dashboard'])->middleware('isLoggedIn');
 Route::get('/logout',[CustomerAuthController::class,'logout']);
-
+Route::get('/playlists',[PlaylistController::class,'playListsIndex'])->middleware('isLoggedIn');
 
 Route::get('/category', [CategoryController::class, 'index']);
 
@@ -34,4 +34,8 @@ Route::get('/song/{id}', 'App\Http\Controllers\SongController@index');
 Route::post('add-playlist', [PlaylistController::class, 'createPlayList']);
 Route::post('add-Song', [PlaylistController::class, 'addSong']);
 Route::get('delete-Playlist/{id}', 'App\Http\Controllers\PlaylistController@deletePlaylist');
+Route::get('delete-Playlist-song/{id}/{list}', 'App\Http\Controllers\PlaylistController@deletePlaylistSong');
+Route::get('delete-Playlists/{list}', 'App\Http\Controllers\PlaylistController@deleteList');
+Route::post('update-Playlists', 'App\Http\Controllers\PlaylistController@updateList');
+
 Route::post('save-Playlist', 'App\Http\Controllers\PlaylistController@savePlaylist');

@@ -91,3 +91,37 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .playlist{
+    border: solid #559584 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .playlist h5{
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bolder;
+    padding: 15px;
+    color: #559584;
+  }
+
+  .playlist a{
+    color: red;
+    text-decoration: none;
+    padding: 15px;
+  }
+
+  .editList{
+    text-align: center;
+    
+  }
+  #myBtn {
+    background: none;
+    border: none;
+  }

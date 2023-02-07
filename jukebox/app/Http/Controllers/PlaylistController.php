@@ -8,6 +8,7 @@ use Session;
 use App\Models\User;
 use App\Models\Playlist;
 use App\Models\Between;
+use App\Models\Song;
 
 class PlaylistController extends Controller
 {
@@ -69,5 +70,45 @@ class PlaylistController extends Controller
          Session::pull('InPlayList');
         return back()->with('success','your list has been submitied');
         }
+    }
+
+    public function playListsIndex(){
+        $data = array();
+        if(Session::has('loginId')){  
+         $data = User::where('id','=',Session::get('loginId'))->first();
+         $between = Between::get();  
+         $songs = Song::get();
+         $playlists = Playlist::get();
+        
+        return view('playlists', compact('data','between','songs','playlists'));
+        }
+    }
+
+    public function deletePlaylistSong($id,$list){
+
+        Between::where([
+            ['playlist_id', '=', $list],
+            ['song_id', '=', $id]
+           
+        ])->delete();
+       
+        return redirect('playlists');
+
+    }
+
+    public function deleteList($list){
+        Between::where('playlist_id', '=', $list)->delete();
+        Playlist::where('id', '=', $list)->delete();
+
+        return redirect('playlists');
+
+    }
+
+    public function updateList(Request $request){
+        
+        Playlist::where('id',$request->id)->update(['name'=>$request->name]);
+        return redirect('playlists');
+
+
     }
 }

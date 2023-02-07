@@ -6,13 +6,15 @@
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item" style="margin-left: 200px; border-right :solid white 5px;s">
+          <li class="nav-item" style="margin-left: 200px; border-right :solid white 5px;">
             <a class="nav-link fw-bold fs-4" href="/category">categories</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold fs-4" href="/dashboard">play Lists</a>
+          <li class="nav-item" style="border-right :solid white 5px;">
+            <a class="nav-link fw-bold fs-4" href="/dashboard">Create</a>
           </li>
-          
+          <li class="nav-item" style="">
+            <a class="nav-link fw-bold fs-4" href="/playlists">play Lists</a>
+          </li>
         </ul>
         
           
