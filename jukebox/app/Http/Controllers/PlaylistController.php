@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SongController;
 use Session;
 use App\Models\User;
+use App\Models\Playlist;
+use App\Models\Between;
 
 class PlaylistController extends Controller
 {
@@ -47,6 +49,25 @@ class PlaylistController extends Controller
 
 
 
+        }
+    }
+    public function savePlaylist(Request $request){
+        if(Session::has('loginId')){
+         
+            $playlist = new Playlist;
+            $playlist->name = $request->name;
+            $playlist->save();
+            $maxId = Playlist::max('id');
+            $selectedSongs = Session::get('InPlayList'); 
+            foreach( $selectedSongs as $selected){
+            $joinedTable = new Between;
+            $joinedTable->song_id = $selected;
+            $joinedTable->playlist_id = $maxId;
+            $joinedTable->save();
+
+        }
+         Session::pull('InPlayList');
+        return back()->with('success','your list has been submitied');
         }
     }
 }

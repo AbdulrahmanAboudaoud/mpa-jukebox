@@ -34,3 +34,4 @@ Route::get('/song/{id}', 'App\Http\Controllers\SongController@index');
 Route::post('add-playlist', [PlaylistController::class, 'createPlayList']);
 Route::post('add-Song', [PlaylistController::class, 'addSong']);
 Route::get('delete-Playlist/{id}', 'App\Http\Controllers\PlaylistController@deletePlaylist');
+Route::post('save-Playlist', 'App\Http\Controllers\PlaylistController@savePlaylist');

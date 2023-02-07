@@ -40,7 +40,7 @@
                 
                 </tr>
                     <div id="myModal"class="modal">
-
+                    
                     <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -49,15 +49,28 @@
                     @endforeach
                     @endforeach 
                     @endif
-                            
+                         
                         </tbody>
                     </table>
+                    <div>
+                        <form action="{{url('save-Playlist')}}" method="post">
+                         @csrf
+                        <label for="name">List Name</label>
+                        <input type="text" id="name" name="name">
+                        <input type="submit" class="btn btn-block btn-success"  value="SUBMIT" name="" id="">
+                        
+    
+                        </form>    
+                     
+                        </div>    
     	        </div>
             </div>
                    
     
             </div>    
-
+                @if(Session::has('success'))
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+                @endif
     <!--
     <form action="{{url('add-playlist')}}" method="POST">
         <div class="form-group">
