@@ -37,5 +37,8 @@ Route::get('delete-Playlist/{id}', 'App\Http\Controllers\PlaylistController@dele
 Route::get('delete-Playlist-song/{id}/{list}', 'App\Http\Controllers\PlaylistController@deletePlaylistSong');
 Route::get('delete-Playlists/{list}', 'App\Http\Controllers\PlaylistController@deleteList');
 Route::post('update-Playlists', 'App\Http\Controllers\PlaylistController@updateList');
+Route::post('add-Song-to-playlist', 'App\Http\Controllers\PlaylistController@addSongToPlaylist');
+Route::get('calculate/{id}', 'App\Http\Controllers\PlaylistController@calculatDuration');
 
 Route::post('save-Playlist', 'App\Http\Controllers\PlaylistController@savePlaylist');
+

@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SongController;
 use Session;
+use DB;
+use stdClass;
 use App\Models\User;
 use App\Models\Playlist;
 use App\Models\Between;
 use App\Models\Song;
+use PhpParser\Node\Expr\New_;
 
 class PlaylistController extends Controller
 {
@@ -111,4 +114,22 @@ class PlaylistController extends Controller
 
 
     }
-}
+
+    public function addSongToPlaylist(Request $request){
+        $data = array();
+        if(Session::has('loginId')){  
+        $data = User::where('id','=',Session::get('loginId'))->first();
+        $between = new Between;
+        $between->playlist_id = $request['playlistId'];
+        $between->song_id = $request['getSong2'];
+        $between->save();
+        
+
+
+
+        }
+        return redirect('playlists');
+    }
+
+
+} 

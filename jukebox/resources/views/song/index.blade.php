@@ -38,7 +38,7 @@
                         <div id="myModal"class="modal">
 
                         <!-- Modal content -->
-                    <div class="modal-content">
+                        <div class="modal-content">
                         <span class="close">&times;</span>
                           
                           
@@ -48,11 +48,31 @@
                           
                           <input type="hidden" name="getSong" value="" id="hidden">
 
-
-                          <input type="submit" value="add">
+                          <label for="add" class="mb-2">Add this song to temp play list:</label>  
+                          <input class="btn btn-success mb-3" type="submit" name="add" value="add" style="width:10%; display:inline-block;">
                           
                         
                         </form>
+                        <form action="{{url('add-Song-to-playlist')}}" method="POST"> 
+                            @csrf
+                               
+                             
+                             <input type="hidden" name="getSong2" value="" id="hidden2">
+   
+                             <label class="mb-2" for="add2">Add this song to a play list:</label> 
+                             <select class="mb-2" name="playlistId" id="" style="width:10%;">
+                                @foreach($exPlayLists as $playlistNew)
+                                <option value="{{$playlistNew->id}}">{{$playlistNew->name}}</option>
+                                @endforeach
+
+                             </select>
+                             
+                             <input class="btn btn-success" type="submit" value="add" name="add2" style="width:10%;">
+
+                             
+                           
+                           </form>
+                           
                         
                     </div>
                     
@@ -62,6 +82,7 @@
                             
                             // Get the button that opens the modal
                             var btn = document.getElementById("{{$song->id}}");
+                            var songId = document.getElementById("hidden2");
                             
                             // Get the <span> element that closes the modal
                             var span = document.getElementsByClassName("close")[0];
@@ -71,6 +92,7 @@
                             btn.onclick = function() {
                             modal.style.display = "block";
                             document.getElementById('hidden').value = '{{$song->id}}';
+                            songId.value = "{{$song->id}}";
                            
                             }
                             

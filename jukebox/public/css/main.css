@@ -125,3 +125,13 @@
     background: none;
     border: none;
   }
+
+.modalBtn{
+  text-decoration: none;
+  background: none;
+  border: none;
+}
+
+.duration{
+  text-align: center;
+}
