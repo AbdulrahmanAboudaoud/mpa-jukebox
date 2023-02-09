@@ -71,18 +71,7 @@
                 @if(Session::has('success'))
                 <div class="alert alert-success">{{Session::get('success')}}</div>
                 @endif
-    <!--
-    <form action="{{url('add-playlist')}}" method="POST">
-        <div class="form-group">
-            @csrf
-            <label for="name">Name</label>
-            <input type="text" name="name">
-        </div>
-        <div class="form-group">
-            <button type="submit">create</button>
-        </div>
-    </form>
--->
+  
    
     
 
