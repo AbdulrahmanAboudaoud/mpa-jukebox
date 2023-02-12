@@ -61,8 +61,11 @@
    
                              <label class="mb-2" for="add2">Add this song to a play list:</label> 
                              <select class="mb-2" name="playlistId" id="" style="width:10%;">
+                                
                                 @foreach($exPlayLists as $playlistNew)
+                                @if ($playlistNew->user_id == Session::get('loginId'))
                                 <option value="{{$playlistNew->id}}">{{$playlistNew->name}}</option>
+                                @endif
                                 @endforeach
 
                              </select>

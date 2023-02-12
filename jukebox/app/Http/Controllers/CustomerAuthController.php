@@ -11,13 +11,18 @@ use App\Models\Song;
 
 class CustomerAuthController extends Controller
 {
+    
+    // function to return login view
     public function login(){
         return view("auth.login");
-
     }
+
+    // function to return registraation view
     public function registration(){
         return view("auth.registration");
     }
+
+    // function to register a new user 
     public function registerUser(Request $request){
         $request->validate([
             'name'=>'required',
@@ -35,6 +40,8 @@ class CustomerAuthController extends Controller
             return back()->with('fail', 'something went wrong');
         }
     }
+
+    // function to login in a user + check
     public function loginUser(Request $request){
         $request->validate([
             
@@ -56,6 +63,8 @@ class CustomerAuthController extends Controller
             return back()->with('fail','This email is not registerd.');
         }
     }
+
+    // function to return a dashboard view with all requested data 
     public function dashboard(){
         $data = array();
         if(Session::has('loginId')){
@@ -66,6 +75,8 @@ class CustomerAuthController extends Controller
         return view('dashboard', compact('data', 'songs' ,'terminalsongs'));
         
     }
+
+    // function to log out a user and return a view 
     public function logout(){
         if(Session::has('loginId')){
             session::pull('loginId');

@@ -15,14 +15,8 @@ use PhpParser\Node\Expr\New_;
 
 class PlaylistController extends Controller
 {
-    public function createPlayList(Request $request){
-        if(Session::has('loginId')){
-            $request->session()->push('PlayList', $request['name']);
-            
-            return redirect('dashboard');
-            
-                }
-    }
+    
+    // function to add songs to Session 
     public function addSong(Request $request){
         if(Session::has('loginId')){
             
@@ -33,6 +27,8 @@ class PlaylistController extends Controller
         
     }
 
+
+    // function to delete song from temporary Session playlist 
     public function deletePlaylist($id){
         $data = array();
         if(Session::has('loginId')){
@@ -55,6 +51,8 @@ class PlaylistController extends Controller
 
         }
     }
+
+    // function to send temporary Session playlist tp data base 
     public function savePlaylist(Request $request){
         if(Session::has('loginId')){
          
@@ -78,6 +76,7 @@ class PlaylistController extends Controller
         }
     }
 
+    // function to return playlists view with all requested data 
     public function playListsIndex(){
         $data = array();
         if(Session::has('loginId')){  
@@ -90,6 +89,7 @@ class PlaylistController extends Controller
         }
     }
 
+    // function to delete a song from data base 
     public function deletePlaylistSong($id,$list){
 
         Between::where([
@@ -102,6 +102,7 @@ class PlaylistController extends Controller
 
     }
 
+    // function to delete all the play list  and relative data from data base 
     public function deleteList($list){
         Between::where('playlist_id', '=', $list)->delete();
         Playlist::where('id', '=', $list)->delete();
@@ -110,6 +111,7 @@ class PlaylistController extends Controller
 
     }
 
+    // function to change existed play list in data base 
     public function updateList(Request $request){
         
         Playlist::where('id',$request->id)->update(['name'=>$request->name]);
@@ -118,6 +120,7 @@ class PlaylistController extends Controller
 
     }
 
+    // function to add new song to a playlist from data base 
     public function addSongToPlaylist(Request $request){
         $data = array();
         if(Session::has('loginId')){  
