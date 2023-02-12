@@ -60,6 +60,7 @@ class PlaylistController extends Controller
          
             $playlist = new Playlist;
             $playlist->name = $request->name;
+            $playlist->user_id  = Session::get('loginId');
             $playlist->save();
             $maxId = Playlist::max('id');
             $selectedSongs = Session::get('InPlayList'); 
@@ -67,6 +68,8 @@ class PlaylistController extends Controller
             $joinedTable = new Between;
             $joinedTable->song_id = $selected;
             $joinedTable->playlist_id = $maxId;
+            
+
             $joinedTable->save();
 
         }

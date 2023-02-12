@@ -18,6 +18,7 @@
         <div class="row">
             <div class="grid-2" style="margin-top:20px;">
                 @foreach ($playlists as $playlist)
+                @if ($playlist->user_id == Session::get('loginId'))
                 <div class="playlist">
                 <h5>{{$playlist->name}}</h5>
 
@@ -159,6 +160,7 @@
                      
                     </table>
                 </div>
+                    @endif
                     @endforeach 
                        
     	        </div>
