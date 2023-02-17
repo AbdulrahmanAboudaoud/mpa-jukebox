@@ -7,13 +7,18 @@ use App\Models\User;
 use Session;
 
 class SessionController extends Controller
+
 {
+
+    // function to add song to session 
+
     public function add(Request $request){
             
         $request->session()->push('InPlayList' ,$request['getSong']);
        
     }
 
+    // function to delete song from the session 
 
     public function delete($id){
         
@@ -32,6 +37,7 @@ class SessionController extends Controller
 
 
 
+    // function to get the user id 
 
     public function getID(){
         
@@ -41,23 +47,30 @@ class SessionController extends Controller
         
     }
 
+    // function to get the playlist from the session 
+
     public function getList(){
         
        $list = Session::get('InPlayList');
        return $list;
     }
 
+    // function to get playlist name from session 
     public function getplName(){
      
         $name =Session::get('PlayList');
         return $name;
     }
     
+    // function to delete all songs from session 
+
     public function deleteSession(){
         
         session::pull('InPlayList');
 
     }
+    
+    // function to delete user id from the session 
     
     public function deleteSessionId(){
         
