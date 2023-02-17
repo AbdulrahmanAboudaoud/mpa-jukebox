@@ -12,6 +12,7 @@ use App\Models\Playlist;
 use App\Models\Between;
 use App\Models\Song;
 use PhpParser\Node\Expr\New_;
+use App\Http\Controllers\SessionController;
 
 class PlaylistController extends Controller
 {
@@ -19,37 +20,25 @@ class PlaylistController extends Controller
     // function to add songs to Session 
     public function addSong(Request $request){
         if(Session::has('loginId')){
-            
-        $request->session()->push('InPlayList' ,$request['getSong']);
-       
-         return back()->with('success','song has ben added');
-        }
+            $sc = new SessionController();
+            $sc->add($request);
         
+        // app('App\Http\Controllers\SessionController')->add($request);
+       
+        }
+        return back()->with('success','song has ben added');
     }
 
 
     // function to delete song from temporary Session playlist 
     public function deletePlaylist($id){
-        $data = array();
+        
         if(Session::has('loginId')){
-            $data = User::where('id','=',Session::get('loginId'))->first();
-            $playlistSec = Session::get('InPlayList');
-
-            $arSearsh = array_search($id, $playlistSec);
-            $sesions = session()->pull('InPlayList',[]);
-
-
-
-          if(($key = array_search($id, $sesions)) !== false){
-            unset($sesions[$key]);
-          }  
-
-          session()->put('InPlayList', $sesions);
-          return redirect('dashboard');
-
-
+          
+        app('App\Http\Controllers\SessionController')->delete($id);
 
         }
+        return redirect('dashboard');
     }
 
     // function to send temporary Session playlist tp data base 
@@ -58,10 +47,10 @@ class PlaylistController extends Controller
          
             $playlist = new Playlist;
             $playlist->name = $request->name;
-            $playlist->user_id  = Session::get('loginId');
+            $playlist->user_id  = app('App\Http\Controllers\SessionController')->getID();
             $playlist->save();
             $maxId = Playlist::max('id');
-            $selectedSongs = Session::get('InPlayList'); 
+            $selectedSongs = app('App\Http\Controllers\SessionController')->getList(); 
             foreach( $selectedSongs as $selected){
             $joinedTable = new Between;
             $joinedTable->song_id = $selected;
@@ -71,7 +60,7 @@ class PlaylistController extends Controller
             $joinedTable->save();
 
         }
-         Session::pull('InPlayList');
+        app('App\Http\Controllers\SessionController')->deleteSession();
         return back()->with('success','your list has been submitied');
         }
     }
@@ -80,7 +69,7 @@ class PlaylistController extends Controller
     public function playListsIndex(){
         $data = array();
         if(Session::has('loginId')){  
-         $data = User::where('id','=',Session::get('loginId'))->first();
+         $data = User::where('id','=',app('App\Http\Controllers\SessionController')->getID())->first();
          $between = Between::get();  
          $songs = Song::get();
          $playlists = Playlist::get();
@@ -124,7 +113,7 @@ class PlaylistController extends Controller
     public function addSongToPlaylist(Request $request){
         $data = array();
         if(Session::has('loginId')){  
-        $data = User::where('id','=',Session::get('loginId'))->first();
+        $data = User::where('id','=',app('App\Http\Controllers\SessionController')->getID())->first();
         $between = new Between;
         $between->playlist_id = $request['playlistId'];
         $between->song_id = $request['getSong2'];

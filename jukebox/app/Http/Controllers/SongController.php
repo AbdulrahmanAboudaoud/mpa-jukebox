@@ -7,6 +7,8 @@ use App\Models\Song;
 use App\Models\Playlist;
 use Session;
 use App\Models\User;
+use App\Http\Controllers\SessionController;
+
 class SongController extends Controller
 {
      // function to get all songs and reurn it in an array 
@@ -18,8 +20,8 @@ class SongController extends Controller
 
         if(Session::has('loginId')){
             
-            $data = User::where('id','=',Session::get('loginId'))->first();
-            $playlistname = Session::get('PlayList');
+            $data = User::where('id','=',app('App\Http\Controllers\SessionController')->getID())->first();
+            $playlistname = app('App\Http\Controllers\SessionController')->getplName();
             $exPlayLists = Playlist::get();
         }
       

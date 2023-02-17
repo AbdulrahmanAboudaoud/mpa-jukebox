@@ -15,7 +15,7 @@ class CategoryController extends Controller
         $data = array();
 
         if(Session::has('loginId')){
-            $data = User::where('id','=',Session::get('loginId'))->first();
+            $data = User::where('id','=',app('App\Http\Controllers\SessionController')->getID())->first();
         }
         
         return view('category.index', ['categories' => $categories], compact('data'));

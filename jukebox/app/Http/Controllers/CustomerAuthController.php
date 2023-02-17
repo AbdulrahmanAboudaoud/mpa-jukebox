@@ -69,8 +69,8 @@ class CustomerAuthController extends Controller
         $data = array();
         if(Session::has('loginId')){
             $songs = Song::get();
-            $terminalsongs = Session::get('InPlayList');
-            $data = User::where('id','=',Session::get('loginId'))->first();
+            $terminalsongs = app('App\Http\Controllers\SessionController')->getList();
+            $data = User::where('id','=',app('App\Http\Controllers\SessionController')->getID())->first();
         }
         return view('dashboard', compact('data', 'songs' ,'terminalsongs'));
         
@@ -79,8 +79,9 @@ class CustomerAuthController extends Controller
     // function to log out a user and return a view 
     public function logout(){
         if(Session::has('loginId')){
-            session::pull('loginId');
-            session::pull('InPlayList');
+            app('App\Http\Controllers\SessionController')->deleteSessionId();
+            app('App\Http\Controllers\SessionController')->deleteSession();
+            
             return redirect('login');
         }
     }
